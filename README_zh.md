@@ -12,7 +12,7 @@
 ## 🛠 硬件需求
 - **reCamera Gimbal**: 基于 RISC-V 的 Linux AI 相机，自带双无刷电机（偏航轴：0-360°，俯仰轴：0-180°）。
   https://www.seeedstudio.com/reCamera-Gimbal-2002w-8GB-p-6402.html
-- **reSpeaker USB 4-Mic Array**: 4麦克风阵列，用于高精度声源定位。
+- **reSpeaker USB 4-Mic Array**: 4麦克风阵列，用于高精度声源定位。  
   https://www.seeedstudio.com/ReSpeaker-XVF3800-USB-Mic-Array-p-6488.html
 - **上位机 PC**: 用于运行 Python 中继脚本。
 
