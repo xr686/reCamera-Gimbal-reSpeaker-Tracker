@@ -1,5 +1,9 @@
 # 🎯 reCamera Gimbal 听声辨位追踪系统
 
+[English](README.md) | [中文](README_zh.md)
+
+![reCamera Gimbal Sound-Tracking](20260413-102934.jpg)
+
 欢迎来到 **reCamera Gimbal 听声辨位追踪** 项目！本仓库展示了如何将 **reSpeaker USB 麦克风阵列** 与基于 RISC-V 和 YOLO11n 架构的 **reCamera Gimbal（云台相机）** 结合，打造一个能“听”并自动在物理世界中追踪声源的边缘 AI 系统。
 
 ## 🌟 项目简介
@@ -33,8 +37,8 @@ graph TD
 ### 1. Python 环境配置 (上位机 PC)
 为了通过 USB 与 reSpeaker 进行通信，请在你的电脑上安装以下依赖：
 ```bash
-# 安装用于 USB 通信的 pyusb
-pip install pyusb
+# 通过提供的 requirements 文件快速安装 Python 依赖库
+pip install -r reCamera_speaker/requirements.txt
 
 # 通过 Conda 安装 libusb (底层驱动支持，必装)
 conda install -c conda-forge libusb
@@ -46,13 +50,17 @@ conda install -c conda-forge libusb
 2. 点击左下角登录 **SenseCraft**。
 3. 登陆后，点击左下角 **“My Application”** 右边的 **“+”** 号，创建新的 Application。
 4. 在新创建的 Application 中，点击右上角的 **三条灰色横杠标志（菜单）**，选择 **导入**。
-5. 点击 **“导入节点文件”**，选择刚刚你从本 GitHub 仓库中下载的 JSON 文件，然后点击 **“导入”**。
+5. 点击 **“导入节点文件”**，找到本仓库 `Node-RED_JSON` 文件夹下的 `flows (23).json` 文件，然后点击 **“导入”**。
 6. 接着点击右上角绿色的 **“部署”** 按钮。
 7. 你需要切换到上方第二个 **“Dashboard”** 选项卡才能看到当前工作流，你可以将默认的那个空白 Dashboard 删掉。
 
 ## 🚀 运行说明与注意事项
 1. **部署确认**：在 Node-RED 导入上述节点后，**务必**点击右上角的“部署”按钮以生效配置。
-2. **测试机制**：先启动 Node-RED 确保其在后台运行，再在 PC 上运行 Python 脚本。对着麦克风说话，你应该能看到 Python 终端不断打印 `SPEECH_DETECTED: 1`，同时 reCamera 将快速转向该声音所在的物理角度。
+2. **测试机制**：先启动 Node-RED 确保其在后台运行，然后在 PC 上执行以下命令运行 Python 脚本：
+   ```bash
+   python reCamera_speaker/server.py
+   ```
+   对着麦克风说话，你应该能看到 Python 终端不断打印 `SPEECH_DETECTED: 1`，同时 reCamera 将快速转向该声音所在的物理角度。
 3. **物理朝向校准**：reSpeaker 麦克风阵列的 `0度` 朝向可能和 reCamera 默认的 `0度` 正前方不完全一致。如果你发现云台转过去后总是偏离一个固定的角度（比如总是偏了90度），你可以直接双击 Node-RED 里新建的 `Calculate & Throttle` 函数节点，解除相关代码的注释并修改偏移量计算：`targetYaw = (targetYaw + 90) % 360;`。
 4. **防抖设计**：因为 Python 代码是每 0.1 秒刷新一次发送数据，如果把这些高频信号全部推给电机控制器（CAN 总线），很容易造成设备总线过载而卡死。所以我已经在 Node-RED 的函数节点里写好了防抖逻辑（只有当角度变化 `>5°` 或时间间隔 `>1秒` 时才会触发电机转动）。
 
