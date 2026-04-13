@@ -40,7 +40,7 @@ graph TD
 为了通过 USB 与 reSpeaker 进行通信，请在你的电脑上安装以下依赖：
 ```bash
 # 通过提供的 requirements 文件快速安装 Python 依赖库
-pip install -r reCamera_speaker/requirements.txt
+pip install -r Sound-Tracking/requirements.txt
 
 # 通过 Conda 安装 libusb (底层驱动支持，必装)
 conda install -c conda-forge libusb
@@ -60,7 +60,7 @@ conda install -c conda-forge libusb
 1. **部署确认**：在 Node-RED 导入上述节点后，**务必**点击右上角的“部署”按钮以生效配置。
 2. **测试机制**：先启动 Node-RED 确保其在后台运行，然后在 PC 上执行以下命令运行 Python 脚本：
    ```bash
-   python reCamera_speaker/server.py
+   python Sound-Tracking/reSpeaker.py
    ```
    对着麦克风说话，你应该能看到 Python 终端不断打印 `SPEECH_DETECTED: 1`，同时 reCamera 将快速转向该声音所在的物理角度。
 3. **物理朝向校准**：reSpeaker 麦克风阵列的 `0度` 朝向可能和 reCamera 默认的 `0度` 正前方不完全一致。如果你发现云台转过去后总是偏离一个固定的角度（比如总是偏了90度），你可以直接双击 Node-RED 里新建的 `Calculate & Throttle` 函数节点，解除相关代码的注释并修改偏移量计算：`targetYaw = (targetYaw + 90) % 360;`。
