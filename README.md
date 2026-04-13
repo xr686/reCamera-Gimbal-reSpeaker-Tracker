@@ -40,7 +40,7 @@ graph TD
 To communicate with the reSpeaker via USB, install the dependencies on your PC:
 ```bash
 # Install required Python packages from the provided requirements file
-pip install -r reCamera_speaker/requirements.txt
+pip install -r Sound-Tracking/requirements.txt
 
 # Install libusb via Conda (Crucial for backend driver support)
 conda install -c conda-forge libusb
@@ -60,7 +60,7 @@ Follow these exact steps to deploy the workflow on your reCamera Gimbal:
 1. **Deployment**: Always remember to click the **Deploy** button in Node-RED after importing the nodes to apply the configuration.
 2. **Test Mechanism**: First, ensure Node-RED is running on the reCamera. Then, run the Python script on your PC by executing:
    ```bash
-   python reCamera_speaker/server.py
+   python Sound-Tracking/reSpeaker.py
    ```
    Speak into the microphone—you should see the Python terminal continuously printing `SPEECH_DETECTED: 1`, while the reCamera rapidly turns towards the angle of your voice.
 3. **Physical Orientation Calibration**: The `0°` orientation of the reSpeaker mic array might not perfectly align with the default `0°` front of the reCamera. If you notice a consistent offset (e.g., it always points 90 degrees away), simply double-click the `Calculate & Throttle` function node in Node-RED, uncomment the offset line, and modify it: `targetYaw = (targetYaw + 90) % 360;`.
