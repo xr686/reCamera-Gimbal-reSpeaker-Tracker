@@ -1,4 +1,3 @@
-```markdown
 # 🎯 reCamera Gimbal Sound-Tracking System
 
 Welcome to the **reCamera Gimbal Sound-Tracking** project! This repository demonstrates how to integrate the **reSpeaker USB Mic Array** with the **reCamera Gimbal** (a RISC-V & YOLO11n powered AI camera) to create an intelligent edge AI system that "hears" and automatically physically tracks sound sources in real-time.
