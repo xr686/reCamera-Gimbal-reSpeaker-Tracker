@@ -11,7 +11,9 @@ By utilizing Sound Source Localization (DOA - Direction of Arrival) from the reS
 
 ## 🛠 Hardware Requirements
 - **reCamera Gimbal**: A RISC-V based Linux AI camera with dual brushless motors (Yaw: 0-360°, Pitch: 0-180°).
+  https://www.seeedstudio.com/reCamera-Gimbal-2002w-8GB-p-6402.html
 - **reSpeaker USB 4-Mic Array**: For high-precision sound source localization.
+  https://www.seeedstudio.com/ReSpeaker-XVF3800-USB-Mic-Array-p-6488.html
 - **Host PC**: To run the Python bridge script.
 
 ## ⚙️ How It Works
