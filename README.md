@@ -58,7 +58,7 @@ Follow these exact steps to deploy the workflow on your reCamera Gimbal:
 
 ## 🚀 Operation & Important Notes
 1. **Deployment**: Always remember to click the **Deploy** button in Node-RED after importing the nodes to apply the configuration.
-2. **Test Mechanism**: First, ensure Node-RED is running on the reCamera. Then, run the Python script on your PC by executing:
+2. **Test Mechanism**: First, ensure Node-RED is running on the reCamera. Then, run the Python script on your PC by executing:  
 Please replace "192.168.31.198" in the code reSpeaker.py with the real IP Address of your reCamera Gimbal after it connects to WiFi!
    ```bash
    python Sound-Tracking/reSpeaker.py
