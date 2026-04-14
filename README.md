@@ -59,12 +59,13 @@ Follow these exact steps to deploy the workflow on your reCamera Gimbal:
 ## 🚀 Operation & Important Notes
 1. **Deployment**: Always remember to click the **Deploy** button in Node-RED after importing the nodes to apply the configuration.
 2. **Test Mechanism**: First, ensure Node-RED is running on the reCamera. Then, run the Python script on your PC by executing:
+Please replace "192.168.31.198" in the code reSpeaker.py with the real IP Address of your reCamera Gimbal after it connects to WiFi!
    ```bash
    python Sound-Tracking/reSpeaker.py
    ```
    Speak into the microphone—you should see the Python terminal continuously printing `SPEECH_DETECTED: 1`, while the reCamera rapidly turns towards the angle of your voice.
-3. **Physical Orientation Calibration**: The `0°` orientation of the reSpeaker mic array might not perfectly align with the default `0°` front of the reCamera. If you notice a consistent offset (e.g., it always points 90 degrees away), simply double-click the `Calculate & Throttle` function node in Node-RED, uncomment the offset line, and modify it: `targetYaw = (targetYaw + 90) % 360;`.
-4. **Anti-jitter Design**: The Python script refreshes every 0.1 seconds. Pushing all these rapid signals directly to the motor controllers (CAN bus) could overload and freeze the device. To prevent this, we implemented an anti-jitter logic inside the Node-RED function node: it only triggers the motors if the angle changes by `>5°` or the time interval is `>1 second`.
+4. **Physical Orientation Calibration**: The `0°` orientation of the reSpeaker mic array might not perfectly align with the default `0°` front of the reCamera. If you notice a consistent offset (e.g., it always points 90 degrees away), simply double-click the `Calculate & Throttle` function node in Node-RED, uncomment the offset line, and modify it: `targetYaw = (targetYaw + 90) % 360;`.
+5. **Anti-jitter Design**: The Python script refreshes every 0.1 seconds. Pushing all these rapid signals directly to the motor controllers (CAN bus) could overload and freeze the device. To prevent this, we implemented an anti-jitter logic inside the Node-RED function node: it only triggers the motors if the angle changes by `>5°` or the time interval is `>1 second`.
 
 ## 💡 Extend This Project!
 This repository is just the beginning! You are highly encouraged to fork this project and extend its capabilities. For example:
