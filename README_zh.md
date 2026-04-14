@@ -58,7 +58,7 @@ conda install -c conda-forge libusb
 
 ## 🚀 运行说明与注意事项
 1. **部署确认**：在 Node-RED 导入上述节点后，**务必**点击右上角的“部署”按钮以生效配置。
-2. **测试机制**：先启动 Node-RED 确保其在后台运行，然后在 PC 上执行以下命令运行 Python 脚本：
+2. **测试机制**：先启动 Node-RED 确保其在后台运行，然后在 PC 上执行以下命令运行 Python 脚本：  
 请在 reSpeaker.py 代码中，将 "192.168.31.198" 替换为 reCamera Gimbal 连接到 WiFi 后的实际 IP 地址!
    ```bash
    python Sound-Tracking/reSpeaker.py
